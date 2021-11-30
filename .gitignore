@@ -88,3 +88,7 @@ lerna-debug.log
 
 # System Files
 .DS_Store
+
+############### PROJECTS CONFIGS ###############
+
+configs/

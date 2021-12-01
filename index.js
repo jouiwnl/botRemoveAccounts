@@ -4,7 +4,10 @@ import config from './configs/configs.js';
 import checkMembers from './src/controller/checkMembers.js';
 import checkMembersByCommand from './src/commands/checkMembersByCommand.js';
 import checkMessageAuthor from './src/utils/checkMessageAuthor.js';
-import { getCommand } from './src/utils/checkCommand.js';
+import newterm from './src/commands/newterm.js';
+import removeterm from './src/commands/removeterm.js';
+import wordlist from './src/commands/wordlist.js';
+import { getArgs, getCommand } from './src/utils/checkCommand.js';
 import { CronJob } from 'cron';
 
 const token = config.BOT_TOKEN1 + config.BOT_TOKEN2;
@@ -29,6 +32,12 @@ client.on('messageCreate', (message) => {
 
     if(getCommand(message) == 'check') {
         checkMembersByCommand(message.guild);
+    } if(getCommand(message) == 'newterm') {
+        newterm(message, getArgs(message));
+    } if(getCommand(message) == 'removeterm') {
+        removeterm(message, getArgs(message));
+    } if(getCommand(message) == 'wordlist') {
+        wordlist(message, getArgs(message));
     }
 })
 

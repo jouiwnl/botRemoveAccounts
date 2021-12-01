@@ -1,16 +1,20 @@
-import blackList from "../utils/blackList.js";
+import Term from '../model/Term.js';
 
-const checkMembers = (membro) => {
+const checkMembers = async (membro) => {
 
-    if (membro.user.username.match(blackList.list)) {
-        membro.ban({ reason: "Você foi banido do servidor" })
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => { 
-            console.log(err);
-        });  
-    }
+    const terms = await Term.find({ guildId: membro.guild.id });
+    
+    terms.map(word => {
+        if (membro.user.username.toLowerCase().match(word.word.toLowerCase())) {
+            membro.ban({ reason: "Você foi banido do servidor" })
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => { 
+                console.log(err);
+            });  
+        }
+    })
 };
 
 export default checkMembers;

@@ -1,8 +1,7 @@
+import blackList from "../utils/blackList";
 const checkMembers = (membro) => {
 
-    const blackList = `(雷伊|Lunar Gostosa|Rayssinha Tesuda|Moreninhaaa Tesuda).*`;
-
-    if (membro.user.username.startsWith('雷伊')) {
+    if (membro.user.username.match(blackList.list)) {
         membro.ban({ reason: "Você foi banido do servidor" })
         .then(res => {
             console.log(res);

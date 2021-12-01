@@ -1,6 +1,6 @@
 const checkMembersByCommand = (message) => {
 
-    const blackList = `(雷伊|Lunar Gostosa|Rayssinha Tesuda|Moreninhaaa Tesuda).*`;
+    const blackList = `(7'|7"|雷伊|Lunar Gostosa|Rayssinha Tesuda|Moreninhaaa Tesuda).*`;
 
     message.guild.members.cache.map(membro => {
         if (membro.user.username.startsWith('雷伊')) {

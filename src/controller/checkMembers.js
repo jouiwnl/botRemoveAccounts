@@ -1,4 +1,5 @@
 import blackList from "../utils/blackList.js";
+
 const checkMembers = (membro) => {
 
     if (membro.user.username.match(blackList.list)) {

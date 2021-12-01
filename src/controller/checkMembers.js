@@ -1,16 +1,16 @@
-const checkMembers = (message, args) => {
+const checkMembers = (membro) => {
 
-    const blackList = `(7"|7'|雷伊|Laura).*`;
+    const blackList = `(雷伊|Lunar Gostosa|Rayssinha Tesuda|Moreninhaaa Tesuda).*`;
 
-    message.guild.members.cache.map(membro => {
-        if (membro.user.username.match(blackList)) {
-            
-            membro.kick("Você foi banido do servidor")
-            .catch(err => { 
-                console.log(err);
-            });
-        }
-    })
+    if (membro.user.username.startsWith('雷伊')) {
+        membro.ban({ reason: "Você foi banido do servidor" })
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => { 
+            console.log(err);
+        });  
+    }
 };
 
 export default checkMembers;

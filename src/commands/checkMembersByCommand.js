@@ -2,14 +2,12 @@ import Term from '../model/Term.js';
 
 const checkMembersByCommand = async (message, servidor) => {
 
-    const LIST_OF_ROLE_NAMES = ["ADM", "MOD", "MANAGE", "STREAMER", "OLD"];
+    const LIST_OF_ROLE_NAMES = ["ADM", "OLD", "MANAGE", "STREAMER", "MODS"];
     var isAuthorized = false;
 
     LIST_OF_ROLE_NAMES.map(roleName => {
-        if (message.member.roles.highest.name.toLowerCase().startsWith(roleName.toLowerCase())) {
+        if (message.member.roles.highest.name.toLowerCase().startsWith(roleName.toString().toLowerCase())) {
             isAuthorized = true;
-        } else {
-            isAuthorized = false;
         }
     });
         
@@ -21,7 +19,7 @@ const checkMembersByCommand = async (message, servidor) => {
             membros.map(membro => {
                 if (membro.user.username != undefined) {
                     terms.map(word => {
-                        if (membro.user.username.toLowerCase().match(word.word.toLowerCase())) {
+                        if (membro.user.username.split(" ").join("").toLowerCase().match(word.word.toLowerCase())) {
                             membro.ban({ reason: "Você foi banido do servidor" })
                             .then(res => {
                                 console.log(res);

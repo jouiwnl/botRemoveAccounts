@@ -22,7 +22,7 @@ client.on('guildMemberAdd', (member) => {
 
 //BOT COMMANDS
 client.on('messageCreate', (message) => {
-
+    
     const job = new CronJob('* */3 * * * *', () => {
         checkMembersAutomatic(message.guild);
     }, null, true, 'America/Sao_Paulo');

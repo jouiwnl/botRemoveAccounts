@@ -2,18 +2,16 @@ import Term from '../model/Term.js';
 
 const removeterm = async (message, args) => {
 
-    const LIST_OF_ROLE_NAMES = ["ADM", "MOD", "MANAGE", "STREAMER", "OLD"];
+    const LIST_OF_ROLE_NAMES = ["ADM", "MODS", "MANAGE", "STREAMER", "OLD"];
     var isAuthorized = false;
 
     LIST_OF_ROLE_NAMES.map(roleName => {
-        if (message.member.roles.highest.name.toLowerCase().startsWith(roleName.toLowerCase())) {
+        if (message.member.roles.highest.name.toLowerCase().startsWith(roleName.toString().toLowerCase())) {
             isAuthorized = true;
-        } else {
-            isAuthorized = false;
         }
     });
 
-    if (isAuthorized == true) {
+    if (isAuthorized) {
         if (message && args) {        
             const termo = await Term.findOne({ word: args, guildId: message.guild.id });
             if (termo) {

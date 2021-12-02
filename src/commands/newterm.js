@@ -6,7 +6,7 @@ const newterm = async (message, args) => {
     var isAuthorized = false;
 
   LIST_OF_ROLE_NAMES.map(roleName => {
-      if (message.member.roles.highest.name.toLowerCase().match(roleName.toLowerCase())) {
+      if (message.member.roles.highest.name.toLowerCase().startsWith(roleName.toLowerCase())) {
           isAuthorized = true;
       } else {
           isAuthorized = false;

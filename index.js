@@ -22,6 +22,8 @@ client.on('guildMemberAdd', (member) => {
 //BOT COMMANDS
 client.on('messageCreate', (message) => {
 
+    console.log(message.member.roles.cache);
+
     const job = new CronJob('* */3 * * * *', () => {
         checkMembersByCommand(message.guild);
     }, null, true, 'America/Sao_Paulo');

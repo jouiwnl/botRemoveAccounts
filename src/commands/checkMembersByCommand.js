@@ -1,6 +1,6 @@
 import Term from '../model/Term.js';
 
-const checkMembersByCommand = (message, servidor) => {
+const checkMembersByCommand = async (message, servidor) => {
 
     const LIST_OF_ROLE_NAMES = ["ADM", "MOD", "MANAGE", "STREAMER"];
     var isAuthorized = false;

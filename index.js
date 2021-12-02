@@ -31,7 +31,7 @@ client.on('messageCreate', (message) => {
     checkMessageAuthor(message);
 
     if(getCommand(message) == 'check') {
-        checkMembersByCommand(message.guild);
+        checkMembersByCommand(message, message.guild);
     } if(getCommand(message) == 'newterm') {
         newterm(message, getArgs(message));
     } if(getCommand(message) == 'removeterm') {

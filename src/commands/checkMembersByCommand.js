@@ -1,19 +1,24 @@
 import Term from '../model/Term.js';
 
-const checkMembersByCommand = async (message, servidor) => {
+const checkMembersByCommand = (message, servidor) => {
 
-    const LIST_OF_ROLE_NAMES = ["ADM", "MOD", "MANAGE", "STREAMER", "OLD"];
+    const LIST_OF_ROLE_NAMES = ["ADM", "MOD", "MANAGE", "STREAMER"];
     var isAuthorized = false;
 
-    LIST_OF_ROLE_NAMES.map(roleName => {
-        if (message.member.roles.highest.name.toLowerCase().startsWith(roleName.toLowerCase())) {
-            isAuthorized = true;
-        } else {
-            isAuthorized = false;
-        }
-    });
+    if (!isAuthorized) {
+        LIST_OF_ROLE_NAMES.map(roleName => {
+            message.member.roles.cache.map(cargoDoMembro => {
+                if (cargoDoMembro.name.toLowerCase().match(roleName.toLowerCase())) {
+                    isAuthorized = true;
+                } else {
+                    isAuthorized = false;
+                }
+            });
+        });
 
-    if (isAuthorized == true) {
+        message.reply(`Você não tem cargo suficiente para executar esse comando!`);
+    }  else if (isAuthorized) {
+
         const terms = await Term.find({ guildId: servidor.id });
 
         servidor.members.fetch().then(membros => {
@@ -35,11 +40,7 @@ const checkMembersByCommand = async (message, servidor) => {
         });
 
         message.reply(`Comando executado com sucesso!`);
-    } else {
-        message.reply(`Você não tem cargo suficiente para executar esse comando!`);
     }
-
-    
 };
 
 export default checkMembersByCommand;

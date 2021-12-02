@@ -18,7 +18,7 @@ const wordlist = async (message, args) => {
         });
 
         const embed = {
-            color: 000000,
+            color: 10181046,
             title: 'Lista de palavras',
             fields: arrayTerms
         };

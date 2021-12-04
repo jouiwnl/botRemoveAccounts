@@ -4,7 +4,9 @@
 ## 🚀 Começando
 
 **O bot apresenta a seguinte função:**
-Uma lista de palavras "proibidas" são definidas por usuários com maior cargo no servidor, sendo assim, qualquer pessoa que entrar no servidor com essa palavra no nick, será automaticamente banida! A cada 3 minutos, são checados usuários novos no servidor, caso alguma verificação tenha passado batida ou uma palavra tenha sido adicionada depois que alguém já entrou no servidor.
+Uma lista de palavras "proibidas" são definidas por usuários com maior cargo no servidor, sendo assim, qualquer pessoa que entrar no servidor com essa palavra no nick, será automaticamente banida! A cada 3 minutos, são checados usuários novos no servidor ao caso de alguma verificação ter passado batida ou alguma palavra tenha sido adicionada depois que alguém já entrou no servidor.
+
+O bot também apresenta a funcionalidade de cargo por reação! Nos comandos citados mais abaixo, é disponibilizada a configuração de um canal de boas-vindas, onde os membros serão obrigados a resgatar um cargo, ou serão kickados em um certo período de tempo!
 
 **Motivo da criação:**
 Self bots são pessoas que criam usuários fakes, a fim de tumultuar ou encher um servidor de usuários sem interação. Desse modo, a pedido de algumas amigas, fiz esse projeto pra tentar diminuir esse problema.
@@ -26,6 +28,12 @@ https://discord.com/api/oauth2/authorize?client_id=915365162268127263&permission
 * j!newterm palavra - **Ex**: j!newterm teste - adiciona uma nova palavra na blacklist!
 * j!removeterm palavra - **Ex**: j!removeterm teste - remove a palavra escrita da blacklist!
 * j!wordlist - **Ex**: j!wordlist - envia uma mensagem no canal, mostrando as palavras cadastradas!
+* j!config - **Ex**: j!config - Faz toda a configuração que o servidor precisa, criando o cargo "Membro", canal de bem-vindo e a mensagem de boas-vindas para ser reagida!
+
+**ATENÇÃO!!!**
+**ESSES COMANDOS DEVEM SER EXECUTADOS APÓS O J!CONFIG**
+* j!setcargo - **Ex**: j!setcargo ID_DO_CARGO - Altera o cargo que o bot vai dar para quem reagiar a mensagem!
+* j!setmessage - **Ex**: j!setmessage ID_DA_MENSAGEM - Altera a mensagem de boas-vindas, caso o servidor já possua uma!
 
 ---
 

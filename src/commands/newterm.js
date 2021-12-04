@@ -2,13 +2,13 @@ import Term from '../model/Term.js';
 
 const newterm = async (message, args) => {
 
-  const LIST_OF_ROLE_NAMES = ["ADM", "MODS", "MANAGE", "STREAMER", "OLD"];
+  const LIST_OF_ROLE_NAMES = ['ADM', 'MODS', 'MANAGE', 'STREAMER', 'OLD'];
   var isAuthorized = false;
 
   LIST_OF_ROLE_NAMES.map(roleName => {
-      if (message.member.roles.highest.name.toLowerCase().startsWith(roleName.toString().toLowerCase())) {
-          isAuthorized = true;
-      }
+    if (message.member.roles.highest.name.toLowerCase().startsWith(roleName.toString().toLowerCase())) {
+      isAuthorized = true;
+    }
   });
 
   if (isAuthorized) {
@@ -19,7 +19,7 @@ const newterm = async (message, args) => {
     } else {
       const termo = new Term({
         guildId: message.guild.id,
-        word: args.split(",").join("")
+        word: args.split(',').join('')
       });
       
       termo.save(err => {
@@ -32,7 +32,7 @@ const newterm = async (message, args) => {
       });
     }
   } else {
-    message.reply(`Você não tem cargo suficiente para executar esse comando!`);
+    message.reply('Você não tem cargo suficiente para executar esse comando!');
   }
 };
 

@@ -32,7 +32,7 @@ https://discord.com/api/oauth2/authorize?client_id=915365162268127263&permission
 
 **ATENÇÃO!!!**
 **ESSES COMANDOS DEVEM SER EXECUTADOS APÓS O J!CONFIG**
-* j!setcargo - **Ex**: j!setcargo ID_DO_CARGO - Altera o cargo que o bot vai dar para quem reagiar a mensagem!
+* j!setcargo - **Ex**: j!setcargo ID_DO_CARGO - Altera o cargo que o bot vai dar para quem reagir a mensagem, caso o servidor já possua um!
 * j!setmessage - **Ex**: j!setmessage ID_DA_MENSAGEM - Altera a mensagem de boas-vindas, caso o servidor já possua uma!
 
 ---

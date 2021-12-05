@@ -42,7 +42,7 @@ const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 // ---------------------------------------
 
-//EVENTOS DE MENSAGEM
+//EVENTOS DE REAÇÃO DE MENSAGEM
 client.on('messageReactionAdd', async (reaction, user) => {
   giveMemberRole(reaction, user);
 });

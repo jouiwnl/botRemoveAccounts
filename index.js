@@ -1,10 +1,8 @@
 //IMPORTS BIBLIOTECAS ESSENCIAIS
 import Discord from 'discord.js';
-import openServer from './src/server/server.js';
 import { CronJob } from 'cron';
 import config from './configs/configs.js';
 import express from 'express';
-import fetch from 'node-fetch';
 const server = express();
 // ---------------------------------------
 
@@ -43,7 +41,6 @@ import Mensagem from './src/model/Mensagem.js';
 const token = config.BOT_TOKEN1 + config.BOT_TOKEN2;
 const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
-const API_BASE = 'https://bot-discord-remove.herokuapp.com/';
 
 server.all('/', (req, res) => {
   res.send('Bot is running');
@@ -79,19 +76,7 @@ client.on('ready', (cliente) => {
     console.log('passou');
   }, null, true, 'America/Sao_Paulo');
 
-	const awakeBot = new CronJob('00 */59 * * * *', () => {
-    const acordar = async () => {
-			const req = await fetch(API_BASE);
-			const success = await req.ok;
-			return success;
-		}
-
-		acordar();
-    
-  }, null, true, 'America/Sao_Paulo');
-
   job.start();
-	awakeBot.start();
 
   fetchNewMessages(cliente);
 });

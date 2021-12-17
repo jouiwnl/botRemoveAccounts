@@ -21,13 +21,13 @@ const sendDmAutomatic = (member) => {
   member.send({ embeds: [embed] }).then(res => {
     console.log(res)
   }).catch(err => {
-    console.log("Não foi possível enviar a mensagem")
+    console.log(err)
   });
 
   member.send(`https://discord.gg/calango`).then(res => {
     console.log(res)
   }).catch(err => {
-    console.log("Não foi possível enviar o convite do servidor")
+    console.log(err)
   });
 };
 

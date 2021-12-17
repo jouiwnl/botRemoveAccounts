@@ -46,15 +46,17 @@ const memberTemp = (message, guild) => {
       });
     });
 
-    guild.channels.fetch().then(a => {
-      a.map(channel => {
-        if(channel) {
-          if (channel.name.toLowerCase().match('teste')) {
-            channel.send(`Um total de ${contador} membros foram kickados por não possuírem nenhum cargo.`)
+    if (contador >= 1) {
+      guild.channels.fetch().then(a => {
+        a.map(channel => {
+          if(channel) {
+            if (channel.name.toLowerCase().match('teste')) {
+              channel.send(`Um total de ${contador} membros foram kickados por não possuírem nenhum cargo.`)
+            }
           }
-        }
+        });
       });
-    });
+    }
   }
 };
 

@@ -20,7 +20,6 @@ import { getArgs, getCommand } from './src/utils/checkCommand.js';
 //IMPORTS DE COMANDOS
 import setMessage from './src/commands/setMessage.js';
 import checkMembersByCommand from './src/commands/checkMembersByCommand.js';
-import checkMessageAuthor from './src/utils/checkMessageAuthor.js';
 import configuracao from './src/commands/configuracao.js';
 import giveMemberRole from './src/controller/giveMemberRole.js';
 import removeMemberRole from './src/controller/removeMemberRole.js';
@@ -120,10 +119,6 @@ client.on('channelDelete', async (channel) => {
 client.on('messageCreate', (message) => {
   //Refaz cache de mensagens dos canais
   fetchNewMessages(client);
-  // ---------------------------------------
-
-  //checa autor da mensagem, pra evitar comandos por bot
-  checkMessageAuthor(message);
   // ---------------------------------------
 
   //COMANDOS GERAIS DO BOT

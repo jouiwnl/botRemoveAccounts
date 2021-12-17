@@ -1,7 +1,7 @@
 import prefix from './prefix.js';
 
 const getCommand = (message) => {
-  if (message.content.startsWith(prefix)) {
+  if (!message.content.startsWith(prefix)) {
     return;
   }
   const commandBody = message.content.slice(prefix.length);
@@ -12,7 +12,7 @@ const getCommand = (message) => {
 };
 
 const getArgs = (message) => {
-  if (message.content.startsWith(prefix)) {
+  if (!message.content.startsWith(prefix)) {
     return;
   }
 

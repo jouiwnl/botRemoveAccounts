@@ -2,7 +2,7 @@ import Term from '../model/Term.js';
 
 const checkMembersByCommand = async (message, servidor) => {
 
-  const LIST_OF_ROLE_NAMES = ['ADM', 'OLD', 'MANAGE', 'STREAMER', 'MODS'];
+  const LIST_OF_ROLE_NAMES = ['ADM', 'DEV', 'MANAGE', 'STREAMER', 'MODS'];
   var isAuthorized = false;
 
   LIST_OF_ROLE_NAMES.map(roleName => {

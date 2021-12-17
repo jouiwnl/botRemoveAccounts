@@ -2,7 +2,7 @@ import Term from '../model/Term.js';
 
 const removeterm = async (message, args) => {
 
-  const LIST_OF_ROLE_NAMES = ['ADM', 'MODS', 'MANAGE', 'STREAMER', 'OLD'];
+  const LIST_OF_ROLE_NAMES = ['ADM', 'MODS', 'MANAGE', 'STREAMER', 'DEV'];
   var isAuthorized = false;
 
   LIST_OF_ROLE_NAMES.map(roleName => {

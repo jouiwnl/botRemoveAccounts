@@ -6,7 +6,7 @@ const configuracao = async (message) => {
   const role = await Role.findOne({ guildId: message.guild.id });
   const channel = await Channel.findOne({ guildId: message.guild.id });
 
-  const LIST_OF_ROLE_NAMES = ['ADM', 'OLD', 'MANAGE', 'STREAMER', 'MODS'];
+  const LIST_OF_ROLE_NAMES = ['ADM', 'DEV', 'MANAGE', 'STREAMER', 'MODS'];
   var isAuthorized = false;
 
   LIST_OF_ROLE_NAMES.map(roleName => {

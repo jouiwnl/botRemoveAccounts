@@ -65,15 +65,17 @@ client.on('messageReactionRemove', async (reaction, user) => {
 
 //EVENTOS QUANDO O BOT ACORDAR
 client.on('ready', (cliente) => {
-  const job = new CronJob('00 */3 * * * *', () => {
+  const job = new CronJob('00 */20 * * * *', () => {
     cliente.guilds.fetch().then(todasGuilds => {
       todasGuilds.map(preGuild => {
         preGuild.fetch().then(guild => {
+          if (guild.name.toLowerCase().match('calango')) {
+            memberTemp(null, guild);
+          }
           checkMembersAutomatic(guild);    
         });
       });
     });
-    console.log('passou');
   }, null, true, 'America/Sao_Paulo');
 
   job.start();
@@ -85,7 +87,6 @@ client.on('ready', (cliente) => {
 //EVENTO QUANDO UM MEMBRO ENTRAR NO SERVIDOR
 client.on('guildMemberAdd', (member) => {
   checkMembers(member);
-  // sendDmAutomatic(member);
 });
 // ----------------------------------
 
@@ -139,7 +140,7 @@ client.on('messageCreate', (message) => {
     wordlist(message, getArgs(message));
 
   } if(getCommand(message) == 'kick') {
-    memberTemp(message);
+    memberTemp(message, null);
 
   } if(getCommand(message) == 'testmessage') {
     sendDmAutomatic(message.member);

@@ -138,7 +138,7 @@ client.on('messageCreate', (message) => {
   } if(getCommand(message) == 'wordlist') {
     wordlist(message, getArgs(message));
 
-  } if(getCommand(message) == 'test') {
+  } if(getCommand(message) == 'kick') {
     memberTemp(message);
 
   } if(getCommand(message) == 'testmessage') {

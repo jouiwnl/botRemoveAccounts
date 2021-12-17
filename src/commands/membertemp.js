@@ -45,17 +45,17 @@ const memberTemp = (message, guild) => {
       });
     });
 
-    if (contadorGuild >= 1) {
-      guild.channels.fetch().then(a => {
-        a.map(channel => {
-          if(channel) {
-            if (channel.name.toLowerCase().match('teste')) {
+    guild.channels.fetch().then(a => {
+      a.map(channel => {
+        if(channel) {
+          if (channel.name.toLowerCase().match('teste')) {
+            if (contadorGuild >= 1) {
               channel.send(`Um total de ${contadorGuild} membros foram kickados por não possuírem nenhum cargo.`)
             }
           }
-        });
+        }
       });
-    }
+    });
   }
 };
 

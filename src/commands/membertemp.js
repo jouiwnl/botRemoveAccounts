@@ -10,12 +10,14 @@ const memberTemp = (message, guild) => {
         var horaQueEntrou = moment(member.joinedTimestamp);
         var horaAtual = moment();
   
-        if (horaAtual.subtract(5, 'minutes') >= horaQueEntrou) {
+        if (horaAtual.subtract(2, 'minutes') >= horaQueEntrou) {
           if (_.isEmpty(member._roles)) {
             if (member.kickable) {
-              contador = contador + 1;
               sendDmAutomatic(member);
-              member.kick('Você foi kickado do servidor! Cheque sua DM!');
+              setTimeout(() => {
+                contador = contador + 1;
+                member.kick('Você foi kickado do servidor! Cheque sua DM!');
+              }, 500);
             }
           }
         }
@@ -35,9 +37,11 @@ const memberTemp = (message, guild) => {
         if (horaAtual.subtract(5, 'minutes') >= horaQueEntrou) {
           if (_.isEmpty(member._roles)) {
             if (member.kickable) {
-              contadorGuild = contadorGuild + 1;
               sendDmAutomatic(member);
-              member.kick('Você foi kickado do servidor! Cheque sua DM!');
+              setTimeout(() => {
+                contadorGuild = contadorGuild + 1;
+                member.kick('Você foi kickado do servidor! Cheque sua DM!');
+              }, 500);
             }
           }
         }

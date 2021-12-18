@@ -4,7 +4,7 @@ import sendDmAutomatic from '../controller/sendDmAutomatic.js';
 
 const memberTemp = (message, guild) => {
   if (message && guild == null) {
-    var contador = 0;
+    var contador = null;
     message.guild.members.fetch().then(a => {
       a.map(member => {
         var horaQueEntrou = moment(member.joinedTimestamp);
@@ -17,7 +17,7 @@ const memberTemp = (message, guild) => {
               setTimeout(() => {
                 contador = contador + 1;
                 member.kick('Você foi kickado do servidor! Cheque sua DM!');
-              }, 500);
+              }, 1500);
             }
           }
         }
@@ -28,7 +28,7 @@ const memberTemp = (message, guild) => {
   } 
 
   if (guild && message == null) {
-    var contadorGuild = 0;
+    var contadorGuild = null;
     guild.members.fetch().then(a => {
       a.map(member => {
         var horaQueEntrou = moment(member.joinedTimestamp);
@@ -41,7 +41,7 @@ const memberTemp = (message, guild) => {
               setTimeout(() => {
                 contadorGuild = contadorGuild + 1;
                 member.kick('Você foi kickado do servidor! Cheque sua DM!');
-              }, 500);
+              }, 1500);
             }
           }
         }
@@ -52,7 +52,7 @@ const memberTemp = (message, guild) => {
       a.map(channel => {
         if(channel) {
           if (channel.name.toLowerCase().match('teste')) {
-            if (contadorGuild > 0) {
+            if (!_.isNull(contadorGuild)) {
               channel.send(`Um total de ${contadorGuild} membros foram kickados por não possuírem nenhum cargo.`)
             }
           }

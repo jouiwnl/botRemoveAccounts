@@ -4,7 +4,7 @@ import sendDmAutomatic from '../controller/sendDmAutomatic.js';
 
 const memberTemp = (message, guild) => {
   if (message && guild == null) {
-    var contador = null;
+    var contador = 0;
     message.guild.members.fetch().then(a => {
       a.map(member => {
         var horaQueEntrou = moment(member.joinedTimestamp);

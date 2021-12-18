@@ -10,7 +10,7 @@ const memberTemp = (message, guild) => {
         var horaQueEntrou = moment(member.joinedTimestamp);
         var horaAtual = moment();
   
-        if (horaAtual.subtract(2, 'minutes') >= horaQueEntrou) {
+        if (horaAtual.subtract(5, 'minutes') >= horaQueEntrou) {
           if (_.isEmpty(member._roles)) {
             if (member.kickable) {
               sendDmAutomatic(member);

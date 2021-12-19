@@ -19,13 +19,13 @@ const sendDmAutomatic = (member) => {
   };
 
   member.send({ embeds: [embed] }).then(res => {
-    console.log(res)
+    console.log('Mensagem enviada')
   }).catch(err => {
     console.log(err)
   });
 
   member.send(`https://discord.gg/calango`).then(res => {
-    console.log(res)
+    console.log('Mensagem Enviada')
   }).catch(err => {
     console.log(err)
   });

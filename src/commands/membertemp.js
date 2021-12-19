@@ -3,8 +3,9 @@ import _ from 'lodash';
 import sendDmAutomatic from '../controller/sendDmAutomatic.js';
 
 const memberTemp = (message, guild) => {
+  var contadorGuild = 0;
+  var contador = 0;
   if (message && guild == null) {
-    var contador = 0;
     message.guild.members.fetch().then(a => {
       a.map(member => {
         var horaQueEntrou = moment(member.joinedTimestamp);
@@ -15,8 +16,10 @@ const memberTemp = (message, guild) => {
             if (member.kickable) {
               sendDmAutomatic(member);
               setTimeout(() => {
-                contador = contador + 1;
-                member.kick('Você foi kickado do servidor! Cheque sua DM!');
+                member.kick('Você foi kickado do servidor! Cheque sua DM!')
+                .then(() => {
+                  contador = contador + 1;
+                });
               }, 1500);
             }
           }
@@ -28,7 +31,6 @@ const memberTemp = (message, guild) => {
   } 
 
   if (guild && message == null) {
-    var contadorGuild = null;
     guild.members.fetch().then(a => {
       a.map(member => {
         var horaQueEntrou = moment(member.joinedTimestamp);
@@ -39,8 +41,10 @@ const memberTemp = (message, guild) => {
             if (member.kickable) {
               sendDmAutomatic(member);
               setTimeout(() => {
-                contadorGuild = contadorGuild + 1;
-                member.kick('Você foi kickado do servidor! Cheque sua DM!');
+                member.kick('Você foi kickado do servidor! Cheque sua DM!')
+                .then(() => { 
+                  contadorGuild = contadorGuild + 1; 
+                });
               }, 1500);
             }
           }
@@ -52,7 +56,7 @@ const memberTemp = (message, guild) => {
       a.map(channel => {
         if(channel) {
           if (channel.name.toLowerCase().match('teste')) {
-            if (!_.isNull(contadorGuild)) {
+            if (contadorGuild > 0) {
               channel.send(`Um total de ${contadorGuild} membros foram kickados por não possuírem nenhum cargo.`)
             }
           }
